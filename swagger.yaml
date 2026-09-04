@@ -1,0 +1,155 @@
+openapi: 3.0.3
+info:
+  title: Job API
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://jobs-api-33mv.onrender.com/api/v1
+paths:
+  /auth/login:
+    post:
+      summary: Login
+      description: Login
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: john@gmail.com
+                password:
+                  type: string
+                  example: john1234
+            examples:
+              Login:
+                value:
+                  email: john@gmail.com
+                  password: john1234
+      responses:
+        "200":
+          description: "Login user to generate jwt"
+  /auth/register:
+    post:
+      summary: Create user
+      description: Create user
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: peter@gmail.com
+                name:
+                  type: string
+                  example: peter
+                password:
+                  type: string
+                  example: peter1234
+            examples:
+              Create user:
+                value:
+                  email: peter@gmail.com
+                  name: peter
+                  password: peter1234
+      responses:
+        "200":
+          description: "Create user to generate token"
+  /jobs:
+    get:
+      summary: Get jobs
+      description: Get jobs
+      operationId: getJobs
+      responses:
+        "200":
+          description: ""
+      security:
+        - bearerAuth: []
+    post:
+      summary: Create job
+      description: Create job
+      operationId: createJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                company:
+                  type: string
+                  example: amazon
+                position:
+                  type: string
+                  example: back-end developer
+            examples:
+              Create job:
+                value:
+                  company: amazon
+                  position: back-end developer
+      responses:
+        "200":
+          description: ""
+      security:
+        - bearerAuth: []
+  /jobs/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Get single job
+      description: Get single job
+      operationId: getSingleJob
+      responses:
+        "200":
+          description: ""
+      security:
+        - bearerAuth: []
+    patch:
+      summary: Update job
+      description: Update job
+      operationId: updateJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                company:
+                  type: string
+                  example: amazon
+                position:
+                  type: string
+                  example: back-end developer
+            examples:
+              Update job:
+                value:
+                  company: amazon
+                  position: back-end developer
+      responses:
+        "200":
+          description: ""
+      security:
+        - bearerAuth: []
+    delete:
+      summary: Delete job
+      description: Delete job
+      operationId: deleteJob
+      responses:
+        "200":
+          description: ""
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags: []
