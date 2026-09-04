@@ -6,31 +6,6 @@ info:
 servers:
   - url: https://jobs-api-33mv.onrender.com/api/v1
 paths:
-  /auth/login:
-    post:
-      summary: Login
-      description: Login
-      operationId: login
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: john@gmail.com
-                password:
-                  type: string
-                  example: john1234
-            examples:
-              Login:
-                value:
-                  email: john@gmail.com
-                  password: john1234
-      responses:
-        "200":
-          description: "Login user to generate jwt"
   /auth/register:
     post:
       summary: Create user
@@ -59,7 +34,32 @@ paths:
                   password: peter1234
       responses:
         "200":
-          description: "Create user to generate token"
+          description: "Account created"
+  /auth/login:
+    post:
+      summary: Login
+      description: Login
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: john@gmail.com
+                password:
+                  type: string
+                  example: john1234
+            examples:
+              Login:
+                value:
+                  email: john@gmail.com
+                  password: john1234
+      responses:
+        "200":
+          description: "User logged in"
   /jobs:
     get:
       summary: Get jobs
