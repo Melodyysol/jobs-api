@@ -8,6 +8,8 @@ servers:
 paths:
   /auth/register:
     post:
+      tags:
+        - Auth
       summary: Create user
       description: Create user
       operationId: createUser
@@ -37,6 +39,8 @@ paths:
           description: "Account created"
   /auth/login:
     post:
+      tags:
+        - Auth
       summary: Login
       description: Login
       operationId: login
@@ -62,6 +66,8 @@ paths:
           description: "User logged in"
   /jobs:
     get:
+      tags:
+        - Jobs
       summary: Get jobs
       description: Get jobs
       operationId: getJobs
@@ -71,6 +77,8 @@ paths:
       security:
         - bearerAuth: []
     post:
+      tags:
+        - Jobs
       summary: Create job
       description: Create job
       operationId: createJob
@@ -104,6 +112,8 @@ paths:
         schema:
           type: string
     get:
+      tags:
+        - Jobs
       summary: Get single job
       description: Get single job
       operationId: getSingleJob
@@ -113,6 +123,8 @@ paths:
       security:
         - bearerAuth: []
     patch:
+      tags:
+        - Jobs
       summary: Update job
       description: Update job
       operationId: updateJob
@@ -139,6 +151,8 @@ paths:
       security:
         - bearerAuth: []
     delete:
+      tags:
+        - Jobs
       summary: Delete job
       description: Delete job
       operationId: deleteJob
